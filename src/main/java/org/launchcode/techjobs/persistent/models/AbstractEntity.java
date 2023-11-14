@@ -9,10 +9,16 @@ import jakarta.validation.constraints.Size;
 
 import java.util.Objects;
 
+//TH
+@MappedSuperclass
 public abstract class AbstractEntity {
 
+    @Id
+    @GeneratedValue
     private int id;
 
+    @NotNull  //Can I double stack these here???
+    @Size(max = 50)
     private String name;
 
     public int getId() {
@@ -27,10 +33,12 @@ public abstract class AbstractEntity {
         this.name = name;
     }
 
+    //do I need to add to the toSting method???
     @Override
     public String toString() {
         return name;
     }
+
 
     @Override
     public boolean equals(Object o) {
